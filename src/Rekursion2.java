@@ -3,24 +3,64 @@ public class Rekursion2 {
     /* *** Aufgabenteil (a) *** */
     public static int quadratRek(int a){
 
-        return 0;  // Dummy return
+        // a=0
+        if (a == 0) {
+            return 0; // 0^2 = 0
+        }
+        // Rekursiver Fall
+        return quadratRek(a - 1) + 2 * a - 1;
+
     }
 
     /* *** Aufgabenteil (b) *** */
 
     public static int treppen(int n, String s){
-       
-        return 0;  // Dummy return    
+
+        // Wenn keine Stufen mehr übrig sind, wird der String ausgegeben
+        if (n == 0) {
+            System.out.println(s);
+            return 1; // Eine Möglichkeit gefunden
+        }
+        // Wenn nur noch eine Stufe übrig ist, wird "-1" angehängt und der String ausgegeben
+        if (n == 1) {
+            System.out.println(s + "-1");
+            return 1; // Eine Möglichkeit gefunden
+        }
+        // Rekursive Aufrufe: Eine Stufe steigen oder zwei Stufen steigen
+        int moeglichkeiten = 0;
+        moeglichkeiten += treppen(n - 1, s + "-1"); // Eine Stufe steigen
+        moeglichkeiten += treppen(n - 2, s + "-2"); // Zwei Stufen steigen
+        return moeglichkeiten; // Rückgabe der Gesamtanzahl der Möglichkeiten
+        
+        
     }
 
     /* *** Aufgabenteil (c) *** */
     public static int naechstesElement(int a_i){
-        
-	return 0;  // Dummy return
+        if (a_i % 2 == 0) {
+            return a_i / 2; // Wenn a gerade ist
+        } else {
+            return 3 * a_i + 1; // Wenn a ungerade ist
+        }
     }
 
     public static void collatz(int a, int count){
-	
+
+        // Aktuelles Element ausgeben
+        System.out.print(a + " ");
+
+        // Basisfall: Wenn a == 1, endet die Folge
+        if (a == 1) {
+            System.out.println();
+            System.out.println("Länge der Folge: " + count);
+            return;
+        }
+
+        // Rekursiver Aufruf mit dem nächsten Element der Collatz-Folge
+        collatz(naechstesElement(a), count + 1);
+
+
+
     }
 
 
@@ -34,12 +74,12 @@ public class Rekursion2 {
 	    z = IOTools.readInteger("z = ");
 	} while (z < 0);
 	System.out.println("z^2 = " + quadratRek(z));
-        
+
 	/* *** Test  Aufgabenteil (b) *** */
 	System.out.println("\n(b)");
         int n = IOTools.readInteger("n = ");
         int count = treppen(n,"");
-        System.out.println("Anzahl der Möglichkeiten: " + count);  
+        System.out.println("Anzahl der Möglichkeiten: " + count);
 
 	/* *** Test  Aufgabenteil (c) *** */
 	System.out.println("\n(c)");
