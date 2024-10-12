@@ -1,7 +1,8 @@
+// Michelle Pohl
 public class Rekursion2 {
 
     /* *** Aufgabenteil (a) *** */
-    public static int quadratRek(int a){
+    public static int quadratRek(int a) {
 
         // a=0
         if (a == 0) {
@@ -14,29 +15,26 @@ public class Rekursion2 {
 
     /* *** Aufgabenteil (b) *** */
 
-    public static int treppen(int n, String s){
-
-        // Wenn keine Stufen mehr übrig sind, wird der String ausgegeben
+    public static int treppen(int n, String s) {
         if (n == 0) {
             System.out.println(s);
             return 1; // Eine Möglichkeit gefunden
         }
-        // Wenn nur noch eine Stufe übrig ist, wird "-1" angehängt und der String ausgegeben
+
         if (n == 1) {
             System.out.println(s + "-1");
             return 1; // Eine Möglichkeit gefunden
         }
-        // Rekursive Aufrufe: Eine Stufe steigen oder zwei Stufen steigen
+
+        // Eine  oder zwei?
         int moeglichkeiten = 0;
-        moeglichkeiten += treppen(n - 1, s + "-1"); // Eine Stufe steigen
-        moeglichkeiten += treppen(n - 2, s + "-2"); // Zwei Stufen steigen
-        return moeglichkeiten; // Rückgabe der Gesamtanzahl der Möglichkeiten
-        
-        
+        moeglichkeiten += treppen(n - 1, s + "-1");
+        moeglichkeiten += treppen(n - 2, s + "-2");
+        return moeglichkeiten;
     }
 
     /* *** Aufgabenteil (c) *** */
-    public static int naechstesElement(int a_i){
+    public static int naechstesElement(int a_i) {
         if (a_i % 2 == 0) {
             return a_i / 2; // Wenn a gerade ist
         } else {
@@ -44,7 +42,7 @@ public class Rekursion2 {
         }
     }
 
-    public static void collatz(int a, int count){
+    public static void collatz(int a, int count) {
 
         // Aktuelles Element ausgeben
         System.out.print(a + " ");
@@ -58,33 +56,28 @@ public class Rekursion2 {
 
         // Rekursiver Aufruf mit dem nächsten Element der Collatz-Folge
         collatz(naechstesElement(a), count + 1);
-
-
-
     }
 
+    public static void main(String[] args) {
 
-
-    public static void main(String[] args){
-
-	/* *** Test  Aufgabenteil (a) *** */
+        /* *** Test  Aufgabenteil (a) *** */
         System.out.println("(a)");
-	int z;
-	do {
-	    z = IOTools.readInteger("z = ");
-	} while (z < 0);
-	System.out.println("z^2 = " + quadratRek(z));
+        int z;
+        do {
+            z = IOTools.readInteger("z = ");
+        } while (z < 0);
+        System.out.println("z^2 = " + quadratRek(z));
 
-	/* *** Test  Aufgabenteil (b) *** */
-	System.out.println("\n(b)");
+        /* *** Test  Aufgabenteil (b) *** */
+        System.out.println("\n(b)");
         int n = IOTools.readInteger("n = ");
-        int count = treppen(n,"");
+        int count = treppen(n, "");
         System.out.println("Anzahl der Möglichkeiten: " + count);
 
-	/* *** Test  Aufgabenteil (c) *** */
-	System.out.println("\n(c)");
-	int a0 = IOTools.readInteger("a_0 = ");
-	collatz(a0,1);
+        /* *** Test  Aufgabenteil (c) *** */
+        System.out.println("\n(c)");
+        int a0 = IOTools.readInteger("a_0 = ");
+        collatz(a0, 1);
 
-   }
+    }
 }
