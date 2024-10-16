@@ -23,7 +23,7 @@ public class Rekursion2 {
 
         if (n == 1) {
             System.out.println(s + "-1");
-            return 1; // Eine Möglichkeit gefunden
+            return 1;
         }
 
         // Eine  oder zwei?
@@ -44,7 +44,6 @@ public class Rekursion2 {
 
     public static void collatz(int a, int count) {
 
-        // Aktuelles Element ausgeben
         System.out.print(a + " ");
 
         // Basisfall: Wenn a == 1, endet die Folge
@@ -54,7 +53,6 @@ public class Rekursion2 {
             return;
         }
 
-        // Rekursiver Aufruf mit dem nächsten Element der Collatz-Folge
         collatz(naechstesElement(a), count + 1);
     }
 
